@@ -18,41 +18,35 @@ body{
 }
 .logo{
     cursor: pointer;
+    background-color: orange;
+    padding: 6px;
     z-index: 2;
+    color: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: 1s;
+    margin-bottom: 12px;
+}
+.logo h1{
+    text-transform: uppercase;
+    font-weight: 800;
 }
 .logo:hover{
     transform: scale(1.1);
 }
-.logo .logo-l{
-    font-size: 2em;
-    background-color: orange;
-    height: 0.5cm;
-    padding: 3px;
-    color: #fff;
-}
-.logo .logo-o{
-    font-size: 1.5em;
-    background-color: orange;
-    height: 0.5cm;
-    padding: 3px;
-    color: #fff;
-    margin-left: 5px;
-    border-radius: 50%;
-}
-.logo .logo-g{
-    font-size: 2em;
-    background-color: orange;
-    height: 0.5cm;
-    padding: 3px;
-    color: #fff;
-    margin-left: 5px;
-}
+
 .search{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f1f3f4;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 200px;
+    margin-bottom: 15px;
+    border-radius: 20px;
 }
-.search .form-control{
+.search input{
     border: none;
     border-top-right-radius: 0 !important;
     border-bottom-left-radius: 20px !important;
@@ -60,20 +54,11 @@ body{
     border-top-left-radius: 20px !important;
     box-shadow: none !important;
     border-bottom: 1px solid orange;
+    padding: 7px;
+    width: 400px;
+    outline: none;
 }
-.icon{
-    background: orange;
-    border: 2px solid orange;
-    margin: 8.5px 10px 3px 0px;
-    border-top-right-radius: 20px !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 20px !important;
-    border-top-left-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 4px;
-    width: 40px;
-    height: 40px;
-}
+
 .fa-solid{
     color: #fff;
 }
@@ -254,9 +239,16 @@ body{
 /*new products*/
 .row-1{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     gap: 2em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.row-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 18px;
 }
 
 .products img{
@@ -265,6 +257,7 @@ body{
     padding: 20px 0;
     transition: 1s;
     height: 150px;
+    object-fit: cover;
 }
 .products img:hover{
     transform: scale(1.1);
@@ -305,8 +298,13 @@ body{
 
 @media only screen and (max-width: 980px){
     .row-1{
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+    }
+    .row-2{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
     .products img{
         width: 100%;
