@@ -11,7 +11,7 @@ body{
     position: relative;
     top: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
     border-bottom: 2px solid orange;
@@ -19,9 +19,9 @@ body{
 .logo{
     cursor: pointer;
     background-color: orange;
-    padding: 6px;
+    padding: 4px;
     z-index: 2;
-    color: #fff;
+    color: #774444;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     transition: 1s;
@@ -29,7 +29,9 @@ body{
 }
 .logo h1{
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 500;
+    font-size: 2em;
+    font-style: italic;
 }
 .logo:hover{
     transform: scale(1.1);
@@ -42,7 +44,7 @@ body{
     background-color: #f1f3f4;
     padding-left: 1em;
     padding-right: 1em;
-    width: 200px;
+    width: 100%;
     margin-bottom: 15px;
     border-radius: 20px;
 }
@@ -62,6 +64,9 @@ body{
 .fa-solid{
     color: #fff;
 }
+.cart-search{
+    width: 100%;
+}
 .cart-search ul{
     display: inline-flex;
     float: right;
@@ -71,7 +76,8 @@ body{
     margin-left: 10px;
     list-style: none;
     border-left: 1px solid #fff;
-    padding: 15px 35px;
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
     background-color: orange;
 }
@@ -87,22 +93,29 @@ body{
 }/*responsive for small devices*/
 @media only screen and (max-width: 980px){
     .top-nav-bar{
-       display: flex;
-       flex-direction:column;
-       margin-top: 10px;
-       justify-content: center;
-       align-items: center;
+        position: relative;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        gap: 40px;
+        align-items: center;
+        padding: 10px 15px;
+        border-bottom: 2px solid orange;
+    }
+    .logo h1{
+        font-size: 1.5em;
     }
     .search{
-        margin-left: 14px;
+        width: 200px;
     }
-    .form-control{
-        width: 100%;
+    .cart-search{
+        display: none;
     }
-    .cart-search ul li{
+    /*.cart-search ul li{
         padding: 10px;
         margin-left: 4px;
-    }
+    }*/
 }
 /*side menu*/
 .header{
@@ -134,6 +147,7 @@ body{
     display: none;
     z-index: 10;
     top: 70px;
+    font-size: 14px;
 }
 .stocks-menu ul li:hover ul{
     display: block;
@@ -250,7 +264,20 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 18px;
 }
-
+.products{
+    position: relative;
+}
+.products:hover .overlay{
+    display: flex !important ;   /* important */
+}
+.product-overlay{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
 .products img{
     width: 100%;
     cursor: pointer;
@@ -258,41 +285,44 @@ body{
     transition: 1s;
     height: 150px;
     object-fit: cover;
+    background-color: rgba(0,0,0,0.5);
 }
 .products img:hover{
     transform: scale(1.1);
 }
 .overlay{
-    display: flex;
-    justify-content: space-between;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 30%;
+    left: 8px;
+    justify-content: center;
+    gap: 5px;
     align-items: center;
-    opacity: 1;
-    width: 70px;
+    background: transparent;
 }
 .overlay .fa{
     cursor: pointer;
-    background-color: #fff;
-    color: #000;
-    height: 35px;
-    width: 35px;
+    color: rgb(207, 145, 20);
     font-size: 20px;
-    padding: 7px;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
 .overlay .btn-secondary{
-    background: orange;
     border: none;
+    background-color: transparent;
 }
 .product-bottom{
-    text-align: center;
+    text-align: start;
     margin-top: 0;
 }
 .fa-star{
     color: orange;
+    font-size: 14px;
 }
 .product-bottom h3{
-    font-size: 20px;
+    font-size: 13px;
+}
+.product-bottom h5{
+    font-size: 14px;
 }
 
 
@@ -316,7 +346,7 @@ body{
     margin-top: 50px;
     background-color: black;
     position: relative;
-    color: #fff;
+    color: #494343;
     padding: 15px;
 }
 .list-footer{
@@ -336,15 +366,20 @@ body{
 .items ul li{
     list-style-type: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+.items ul li:hover{
+    color: #f1f3f4;
+    transform: scale(1.1);
 }
 .fa-facebook-square, .fa-twitter-square, .fa-linkedin-square{
-    color: blue;
-    background: #fff;
+    margin-right: 5px;
 }
 .fa-youtube-play{
     background-color: #fff;
     color: red;
+    margin-right: 5px;
 }
 
 .items img{
@@ -359,12 +394,18 @@ body{
 @media only screen and (max-width: 980px){
     .list-footer{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: center;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
     }
     .items img{
         width: 150px;
+    }
+}
+@media only screen and (min-width: 1360px){
+    .list-footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
